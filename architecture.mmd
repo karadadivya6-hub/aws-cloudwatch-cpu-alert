@@ -1,0 +1,8 @@
+flowchart TD
+    A[Amazon EC2 instance] -->|CPUUtilization metric| B[Amazon CloudWatch]
+    B --> C{CPU exceeds configured threshold?}
+    C -->|Yes: ALARM state| D[CloudWatch alarm action]
+    D --> E[Amazon SNS topic]
+    E --> F[Confirmed email subscription]
+    F --> G[Email notification]
+    C -->|No| H[OK state]
